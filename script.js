@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'none';
         answerOptionsContainer.style.display = 'block';
         claimPrizeBtn.textContent = 'Claim Prize 🏆';
+        claimPrizeBtn.disabled = false;
         spinBtn.disabled = false;
     };
 
