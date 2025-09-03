@@ -19,7 +19,7 @@
         <button class="spin-button" id="spin-btn">Spin It</button>
     </div>
 
-    <div id="questionModal" class="modal">
+    <!-- <div id="questionModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <p id="questionText"></p>
@@ -29,8 +29,26 @@
 
             <button id="claim-prize-btn" class="hidden">Claim Prize 🏆</button>
         </div>
-    </div>
+    </div> -->
 
-    <script src="./script.js"></script>
+    <div id="questionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="questionText"></p>
+            <div id="answer-options">
+                </div>
+            
+            <div id="prize-display" class="hidden">
+                <img id="prizeImage" src="" alt="Your Prize">
+                <p id="prizeName"></p>
+            </div>
+        
+            <p id="feedbackText"></p>
+            <button id="claim-prize-btn" class="hidden">Claim Prize 🏆</button>
+        </div>
+    </div>
+    
+
+    <script type="module" src="./script.js"></script>
 </body>
 </html>
