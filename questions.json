@@ -1,0 +1,74 @@
+[
+  {
+    "question": "What does HTML stand for?",
+    "answers": [
+      { "text": "Hyper Trainer Marking Language", "correct": false },
+      { "text": "Hyper Text Markup Language", "correct": true },
+      { "text": "High-Level Text Machine Language", "correct": false },
+      { "text": "Hyperlink and Text Markup Language", "correct": false }
+    ]
+  },
+  {
+    "question": "Which property is used to change the background color in CSS?",
+    "answers": [
+      { "text": "color", "correct": false },
+      { "text": "bgcolor", "correct": false },
+      { "text": "background-color", "correct": true },
+      { "text": "background", "correct": false }
+    ]
+  },
+  {
+    "question": "What is the correct way to declare a variable in JavaScript?",
+    "answers": [
+      { "text": "var myVar;", "correct": true },
+      { "text": "variable myVar;", "correct": false },
+      { "text": "v myVar;", "correct": false },
+      { "text": "string myVar;", "correct": false }
+    ]
+  },
+  {
+    "question": "Which of these is NOT a JavaScript framework?",
+    "answers": [
+      { "text": "React", "correct": false },
+      { "text": "Angular", "correct": false },
+      { "text": "Vue", "correct": false },
+      { "text": "Laravel", "correct": true }
+    ]
+  },
+  {
+    "question": "What does JSON stand for?",
+    "answers": [
+      { "text": "JavaScript Object Notation", "correct": true },
+      { "text": "Java Standard Output Network", "correct": false },
+      { "text": "JavaScript Online Network", "correct": false },
+      { "text": "Java Object Name", "correct": false }
+    ]
+  },
+  {
+    "question": "Which tag is used to create a hyperlink in HTML?",
+    "answers": [
+      { "text": "<link>", "correct": false },
+      { "text": "<hlink>", "correct": false },
+      { "text": "<a>", "correct": true },
+      { "text": "<href>", "correct": false }
+    ]
+  },
+  {
+    "question": "How do you add a comment in a CSS file?",
+    "answers": [
+      { "text": "// this is a comment", "correct": false },
+      { "text": "", "correct": false },
+      { "text": "/* this is a comment */", "correct": true },
+      { "text": "** this is a comment **", "correct": false }
+    ]
+  },
+  {
+    "question": "Which function is used to print content to the console in JavaScript?",
+    "answers": [
+      { "text": "console.log()", "correct": true },
+      { "text": "print()", "correct": false },
+      { "text": "log.console()", "correct": false },
+      { "text": "document.write()", "correct": false }
+    ]
+  }
+]
