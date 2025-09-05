@@ -1,0 +1,374 @@
+/* General Body Styles */
+body {
+    /* Use the new Poppins font */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* New subtle gradient background */
+    background: #f7f8fc;
+    background-image: linear-gradient(135deg, #f7f8fc 0%, #eef1f5 100%);
+    overflow: hidden;
+}
+
+.wheel-container {
+    position: relative;
+    width: 95vw;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* The Wheel Spinner */
+.wheel-spinner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    /* Background is now controlled by JavaScript */
+}
+
+/* The styled circle in the middle */
+.wheel-spinner::after {
+    content: '';
+    position: absolute;
+    width: 15%; /* Use percentage for responsiveness */
+    height: 15%;
+    background: #fff;
+    background-image: url("https://scontent.fpnh19-1.fna.fbcdn.net/v/t39.30808-6/487394735_1163375895583779_7120676866079050354_n.png?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEx4x09ZM_rLLoI3nD1ND5PXjddYZBA3T9eN11hkEDdP3SZkw6QE5kadJi2S-ZCBSgQO6mgFZ2kEODsRtakwD_T&_nc_ohc=TbwvT_Ccy84Q7kNvwGOKrN1&_nc_oc=AdmOhBCfCvwAC6gAwHDIR7yTf0korBjsX2dxl3xW5nVmxiXhyUSxOje9kmrvHKW76vM&_nc_zt=23&_nc_ht=scontent.fpnh19-1.fna&_nc_gid=H2lZzG_Qj8o1RTl2ssv22g&oh=00_AfYWEGaE05vFGb8MhxiffSCISJt3b7lKgx9RJXdFdgMyhg&oe=68BD98F4");
+    background-size: contain;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #e0e0e0;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Text on the Wheel Segments */
+.wheel-segment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wheel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    
+    /* ADD these two lines to make it a container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Add this new style for the SVG element itself */
+.wheel svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* The ::after pseudo-element now belongs to .wheel */
+.wheel::after {
+    content: '';
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    background: #fff;
+    /* This URL is from your provided code */
+    background-image: url("https://scontent.fpnh19-1.fna.fbcdn.net/v/t39.30808-6/487394735_1163375895583779_7120676866079050354_n.png?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEx4x09ZM_rLLoI3nD1ND5PXjddYZBA3T9eN11hkEDdP3SZkw6QE5kadJi2S-ZCBSgQO6mgFZ2kEODsRtakwD_T&_nc_ohc=TbwvT_Ccy84Q7kNvwGOKrN1&_nc_oc=AdmOhBCfCvwAC6gAwHDIR7yTf0korBjsX2dxl3xW5nVmxiXhyUSxOje9kmrvHKW76vM&_nc_zt=23&_nc_ht=scontent.fpnh19-1.fna&_nc_gid=H2lZzG_Qj8o1RTl2ssv22g&oh=00_AfYWEGaE05vFGb8MhxiffSCISJt3b7lKgx9RJXdFdgMyhg&oe=68BD98F4");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    /* Add z-index to make sure it's on top */
+    z-index: 10;
+    /* The transform is no longer needed since .wheel is a flex container */
+    /* transform: translate(-50%, -50%); */
+    border: 5px solid #e0e0e0;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Text on the Wheel Segments */
+.segment-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: 0% 0%;
+    /* Ensure text is white to be visible on random colors */
+    color: #fff;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* The Pointer Arrow */
+.wheel-pointer {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    /* transform: translateY(-50%) rotate(175deg); */
+    transform: translateY(-110%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 35px solid #475569; /* Darker color */
+    z-index: 10;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+}
+
+/* The Spin Button - Redesigned */
+.spin-button {
+    margin-top: 30px;
+    padding: 12px 40px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    /* Striking gradient background */
+    background-image: linear-gradient(45deg, #6A1B9A 0%, #303F9F 100%);
+    border: none;
+    border-radius: 50px; /* Fully rounded */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.spin-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.spin-button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.spin-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Modal styles - Redesigned */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border: none;
+    width: 90%;
+    max-width: 550px;
+    border-radius: 16px; /* More rounded corners */
+    text-align: center;
+    position: relative;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#questionText {
+    font-weight: 600;
+    color: #333;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-button:hover {
+    color: #333;
+}
+
+/* Answer Options Container */
+#answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Space between buttons */
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    padding: 14px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: left;
+    font-weight: 500;
+}
+
+.answer-btn:hover:not(:disabled) {
+    background-color: #eef1f5;
+    border-color: #6A1B9A;
+    transform: scale(1.02);
+}
+
+.answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Styles for feedback */
+.answer-btn.correct {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.answer-btn.wrong {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+#feedbackText {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+/* Style for the new "Claim Prize" button */
+#claim-prize-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-image: linear-gradient(45deg, #4CAF50 0%, #81C784 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+#claim-prize-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none;
+}
+
+#prize-display {
+    padding: 20px;
+    margin-top: 15px;
+    border: 2px dashed var(--color-primary);
+    border-radius: 12px;
+    background-color: #f8f5fc;
+}
+
+#prize-display img {
+    max-width: 250px;
+    margin-bottom: 10px;
+}
+
+#prize-display p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin: 0;
+}
+
+@media (min-width: 1024px) {
+    .wheel-container {
+        max-width: 650px;
+    }
+    .segment-text {
+        font-size: 16px;
+        top: 60%;
+        left: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .wheel-container {
+        position: relative;
+        width: 90%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .segment-text {
+        position: absolute;
+        top: 60%;
+        left: 53%;
+        width: 45%;
+        transform-origin: 0% 0%;
+        color: white;
+        font-weight: 600; /* Bolder font weight */
+        font-size: 10px; /* Slightly smaller for better fit */
+        padding: 0 25px;
+        box-sizing: border-box;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .spin-button {
+        border-radius: 15px; /* Fully rounded */
+        width: 40%;
+        margin-top: 10%;
+    }
+
+}
+@media (max-width: 767px) {
+    .segment-text {
+        position: absolute;
+        top: 58%;
+        left: 52%;
+        width: 52%;
+        transform-origin: 0% 0%;
+        color: white;
+        font-weight: 600;
+        font-size: 8px;
+        padding: 0px 15px;
+        box-sizing: border-box;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+}

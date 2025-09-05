@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Free Coffee Voucher",
+      "image": "images/coupon.jpg"
+    },
+    {
+      "name": "50% Off Coupon",
+      "image": "images/prize-coupon.jpg"
+    },
+    {
+      "name": "$10 Gift Card",
+      "image": "images/coupon.jpg"
+    },
+    {
+      "name": "A Brand T-Shirt",
+      "image": "images/coupon.jpg"
+    },
+    {
+      "name": "Free Movie Ticket",
+      "image": "images/coupon.jpg"
+    }
+  ]
