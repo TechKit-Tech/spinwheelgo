@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createWheel(){
         theWheel = new Winwheel({
             'strokeStyle': null,
-            'outerRadius': 212,        // Set outer radius so wheel fits inside the background.
+            'outerRadius': 250,        // Set outer radius so wheel fits inside the background.
             'innerRadius': 25,         // Make wheel hollow so segments dont go all way to center.
             'textFontSize': 15,         // Set default font size for the segments.
             'textOrientation': 'horizontal', // Make text vertial so goes down from the outside of wheel.
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // spinBtn.disabled = false;
         wheelSpinning = false;
     };
-    
+
     closeBtn.addEventListener('click', closeModal);
 
     spinBtn.addEventListener('click', () => {

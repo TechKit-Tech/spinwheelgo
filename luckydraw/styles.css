@@ -336,7 +336,7 @@ body {
 #prizePointer {
     position: absolute;
     left: 47%;
-    top: 3%;
+    top: -5%;
     z-index: 999;
     width: 5%;
 }
