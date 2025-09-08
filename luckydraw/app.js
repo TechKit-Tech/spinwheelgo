@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let filenameDate = "";
             switch (new Date().toLocaleDateString()) {
                 case '9/8/2025':
-                    filenameDate = "accountnumber.json";
+                    filenameDate = "../luckydraw/accountnumber.json";
                     break;
                 case '9/12/2025':
-                    filenameDate = "accountnumber_day2.json";
+                    filenameDate = "../luckydraw/accountnumber_day2.json";
                     break;
                 case '9/13/2025':
-                    filenameDate = "accountnumber_day3.json";
+                    filenameDate = "../luckydraw/accountnumber_day3.json";
                     break;
             }
 
