@@ -17,7 +17,7 @@ body {
     /* background-image: linear-gradient(135deg, #f7f8fc 0%, #eef1f5 100%); */
     /* New background image */
     background-image: url('../images/BM_Spining_Wheel_BG.png');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     overflow: hidden;
 }

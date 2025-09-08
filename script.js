@@ -110,6 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     };
 
+    // Function to select prize based on probability
+    function selectPrize(prizes) {
+        // Example: each prize should have a "probability" property (sum should ideally be 1)
+        let random = Math.random();
+        let sum = 0;
+
+        for (let prize of prizes) {
+            sum += prize.probability; 
+            if (random <= sum) {
+                return prize;
+            }
+        }
+        return prizes[prizes.length - 1]; // fallback
+    }
+
+    // Add click listener to all images
+    function onlyUnique(value, index, array) {
+        return array.indexOf(value) === index;
+    }
+
     const checkAnswer = (selectedAnswer) => {
         // Disable all answer buttons
         const buttons = answerOptionsContainer.querySelectorAll('.answer-btn');
@@ -121,12 +141,26 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide answers and show a random prize
             setTimeout(() => {
                 answerOptionsContainer.classList.add('hidden');
+
+                const arrayNumber = [];
+                const countsById = {};
+                for (let i = 0; i < 100; i++) {
+                    const prize = selectPrize(prizes);
+                    const id = prize.name; // Use the 'id' property for comparison
+                    countsById[id] = (countsById[id] || 0) + 1;
+                    arrayNumber.push(prize.name);
+                }
+                console.log(`You won: ${JSON.stringify(countsById)}`)
+                console.log(`You won: ${arrayNumber.filter(onlyUnique)}`)
                 
+                const prize = selectPrize(prizes);
+
                 // Pick and display a random prize
-                const randomIndex = Math.floor(Math.random() * prizes.length);
-                currentPrize = prizes[randomIndex];
-                prizeImage.src = currentPrize.image;
-                prizeName.textContent = `អបអរសាទរ! អ្នកទទួលបាន ${currentPrize.name} ពី MBCambodia`;;
+                // const randomIndex = Math.floor(Math.random() * prizes.length);
+                // currentPrize = prizes[randomIndex];
+
+                prizeImage.src = prize.image;
+                prizeName.textContent = `អបអរសាទរ! អ្នកទទួលបាន ${prize.name} ពី MBCambodia`;;
                 
                 prizeDisplay.classList.remove('hidden');
                 claimPrizeBtn.classList.remove('hidden');

@@ -1,22 +1,27 @@
 [
   {
     "name": "Key Chain",
-    "image": "images/prize/key.png"
+    "image": "images/prize/key.png",
+    "probability": 0.25
   },
   {
     "name": "Pen",
-    "image": "images/prize/pen.png"
+    "image": "images/prize/pen.png",
+    "probability": 0.4
   },
   {
     "name": "Eco bag",
-    "image": "images/prize/bag.png"
+    "image": "images/prize/bag.png",
+    "probability": 0.25
   },
   {
     "name": "Premium Tumbler",
-    "image": "images/prize/tumbler.png"
+    "image": "images/prize/tumbler.png",
+    "probability": 0.05
   },
   {
     "name": "Small Umbrella",
-    "image": "images/prize/umbrella.png"
+    "image": "images/prize/umbrella.png",
+    "probability": 0.05
   }
 ]
