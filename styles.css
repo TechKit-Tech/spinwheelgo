@@ -17,7 +17,7 @@ body {
     /* background-image: linear-gradient(135deg, #f7f8fc 0%, #eef1f5 100%); */
     /* New background image */
     background-image: url('./images/BM_Spining_Wheel_BG.png');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     overflow: hidden;
 }
@@ -51,7 +51,7 @@ body {
     width: 15%; /* Use percentage for responsiveness */
     height: 15%;
     background: #fff;
-    background-image: url("./images/logo.jpg");
+    background-image: url("./images/logo_mb.jpg");
     background-size: contain;
     border-radius: 50%;
     top: 50%;
@@ -263,11 +263,11 @@ body {
 }
 
 #prize-display {
-    padding: 20px;
+    /* padding: 20px; */
     margin-top: 15px;
     border: 2px dashed var(--color-primary);
     border-radius: 12px;
-    background-color: #f8f5fc;
+    /* background-color: #f8f5fc; */
 }
 
 #prize-display img {
@@ -278,20 +278,21 @@ body {
 #prize-display p {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--color-secondary);
+    color: #333;
     margin: 0;
 }
 
 @media only screen and (min-width: 1024px) {
     .wheel-container {
-        max-width: 650px;
+        max-width: 500px;
         margin-top: 5%;
         width: 50%;
     }
     .segment-text {
-        font-size: 15px;
-        top: 65%;
-        left: 55%;
+        font-size: 12px;
+        top: 62%;
+        left: 56%;
+        width: 48%;
     }
     #spin-btn{
         width: 50%;

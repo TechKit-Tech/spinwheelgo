@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const spinBtn = document.getElementById('spin-btn');
     const modal = document.getElementById('questionModal');
     const questionText = document.getElementById('questionText');
+    const titleText = document.getElementById('titleText');
     const feedbackText = document.getElementById('feedbackText');
     const closeBtn = document.querySelector('.close-button');
     const claimPrizeBtn = document.getElementById('claim-prize-btn');
@@ -15,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const prizeImage = document.getElementById('prizeImage');
     const prizeName = document.getElementById('prizeName');
     const wheel = document.getElementById('wheel');
+
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    let centerImage = new Image();
+    centerImage.src = '../images/logo.png'; // your image file
 
     // --- Game State ---
     let accnumbers = [];
@@ -118,13 +124,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 'spins': 3,
                 'callbackFinished': showModal,
                 'soundTrigger': 'pin'        // Specify pins are to trigger the sound.
-            },
+            }
         });
 
         // let i = 0;
 
         theWheel.deleteSegment();
         const colors = ['#6A1B9A', '#303F9F', '#0277BD', '#00695C', '#558B2F', '#F9A825', '#EF6C00', '#D84315','#00695C', '#F9A825'];
+        const colorText = [
+        '#4E79A7', // muted blue
+        '#A0CBE8', // soft blue
+        '#F28E2B', // muted orange
+        '#FFBE7D', // soft orange
+        '#59A14F', // muted green
+        '#8CD17D', // soft green
+        '#B6992D', // muted mustard
+        '#F1CE63', // soft yellow
+        '#499894', // teal
+        '#86BCB6', // soft teal
+        '#E15759', // muted red
+        '#FF9D9A', // soft red
+        '#79706E', // gray
+        '#BAB0AC'  // light gray
+        ];
 
         for (let i = 0; i < accnumbers.length; i++){
             theWheel.addSegment({
@@ -134,13 +156,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1);
             theWheel.addSegment({
                 'text' : 'Thank you',
-                'fillStyle' : getRandomColor(),
+                'fillStyle' : colorText[i],
                 'textFillStyle' : "#ffffff"
             }, 2);
         }
         
         // console.log(`checking array ${i}`)
         theWheel.draw();
+
+        // ctx.save();
+        // ctx.beginPath();
+        // ctx.arc(canvas.width / 2, canvas.height / 2, 40, 0, Math.PI * 2, true); // radius = 50
+        // ctx.closePath();
+        // ctx.fillStyle = "#ffffff";
+        // ctx.fill();
+        // ctx.clip();
+        // // Draw image at the center (adjust size as needed)
+        // ctx.drawImage(centerImage, canvas.width/2 - 25, canvas.height/2 - 25, 50, 50);
+        // ctx.restore();
     }
 
     function getRandomColor() {
@@ -154,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showModal = async (item) => {
         questionText.textContent = item.text;
+        titleText.textContent = "You have win MB VIP Account Number";
         feedbackText.textContent = '';
 
         if (item.text != 'Thank you') {
@@ -161,6 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 winner_number: item.text,
                 createdAt: new Date()
             });
+        }else{
+            titleText.textContent = "";
+            questionText.textContent = "You will be lucky tomorrow, see you again 💙";
         }
 
         

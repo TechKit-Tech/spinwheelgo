@@ -51,7 +51,7 @@ body {
     width: 15%; /* Use percentage for responsiveness */
     height: 15%;
     background: #fff;
-    background-image: url("../images/logo.jpg");
+    background-image: url("../images/logo.png");
     background-size: contain;
     border-radius: 50%;
     top: 50%;
@@ -99,7 +99,7 @@ body {
     height: 15%;
     background: #fff;
     /* This URL is from your provided code */
-    background-image: url("../images/logo.jpg");
+    background-image: url("../images/logo.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -194,7 +194,7 @@ body {
 
 .modal-content {
     /* background-color: #fff; */
-    background-image: url("./images/Box.png");
+    background-image: url("../images/Box.png");
     background-image: no-repeat;
     background-size: cover;
     background-position: center;
@@ -212,6 +212,7 @@ body {
 #questionText {
     font-weight: 600;
     color: #333;
+    font-size: 3rem;
 }
 
 .close-button {
@@ -327,8 +328,8 @@ body {
 }
 
 #canvasContainer {
-    background-image: url("../images/logo.jpg");
-    background-size: 17%;
+    background-image: url("../images/logomb.jpg");
+    background-size: 8%;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;

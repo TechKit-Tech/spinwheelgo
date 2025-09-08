@@ -1,22 +1,22 @@
 [
-    {
-      "name": "Free Coffee Voucher",
-      "image": "images/coupon.jpg"
-    },
-    {
-      "name": "50% Off Coupon",
-      "image": "images/prize-coupon.jpg"
-    },
-    {
-      "name": "$10 Gift Card",
-      "image": "images/coupon.jpg"
-    },
-    {
-      "name": "A Brand T-Shirt",
-      "image": "images/coupon.jpg"
-    },
-    {
-      "name": "Free Movie Ticket",
-      "image": "images/coupon.jpg"
-    }
-  ]
+  {
+    "name": "Key Chain",
+    "image": "images/prize/key.png"
+  },
+  {
+    "name": "Pen",
+    "image": "images/prize/pen.png"
+  },
+  {
+    "name": "Eco bag",
+    "image": "images/prize/bag.png"
+  },
+  {
+    "name": "Premium Tumbler",
+    "image": "images/prize/tumbler.png"
+  },
+  {
+    "name": "Small Umbrella",
+    "image": "images/prize/umbrella.png"
+  }
+]

@@ -117,8 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (selectedAnswer.correct) {
             answerOptionsContainer.style.display = 'none';
-            // feedbackText.textContent = 'Correct! 🎉';
-            feedbackText.style.color = '#ffffff';
             
             // Hide answers and show a random prize
             setTimeout(() => {
@@ -128,15 +126,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const randomIndex = Math.floor(Math.random() * prizes.length);
                 currentPrize = prizes[randomIndex];
                 prizeImage.src = currentPrize.image;
-                prizeName.textContent = currentPrize.name;
+                prizeName.textContent = `អបអរសាទរ! អ្នកទទួលបាន ${currentPrize.name} ពី MBCambodia`;;
                 
-                // prizeDisplay.classList.remove('hidden');
+                prizeDisplay.classList.remove('hidden');
                 claimPrizeBtn.classList.remove('hidden');
             }, 1000); // Wait 1 second before showing the prize
 
         } else {
-            feedbackText.textContent = 'Sorry, that was incorrect.';
-            feedbackText.style.color = '#ffffff';
+            feedbackText.textContent = 'សូមអភ័យទោស! ចម្លើយរបស់មិនត្រឹមត្រូវទេ';
+            feedbackText.style.color = '#333';
         }
     };
 
@@ -155,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         
             // 4. Congratulate the user!
-            alert(`Congratulations! 🏆 You won a ${currentPrize.name}`);
+            // alert(`Congratulations! 🏆 You won a ${currentPrize.name}`);
             
             closeModal();
         
@@ -172,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeModal = () => {
         modal.style.display = 'none';
-        answerOptionsContainer.style.display = 'block';
+        answerOptionsContainer.style.display = 'flex';
         claimPrizeBtn.textContent = 'Claim Prize 🏆';
         claimPrizeBtn.disabled = false;
         spinBtn.disabled = false;
