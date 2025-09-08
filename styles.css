@@ -1,7 +1,12 @@
+@font-face {
+    font-family: ang;
+    src: url('./fonts/angdang.ttf');
+}
+
 /* General Body Styles */
 body {
     /* Use the new Poppins font */
-    font-family: 'Poppins', sans-serif;
+    font-family: ang;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,13 +14,17 @@ body {
     margin: 0;
     /* New subtle gradient background */
     background: #f7f8fc;
-    background-image: linear-gradient(135deg, #f7f8fc 0%, #eef1f5 100%);
+    /* background-image: linear-gradient(135deg, #f7f8fc 0%, #eef1f5 100%); */
+    /* New background image */
+    background-image: url('./images/BM_Spining_Wheel_BG.png');
+    background-size: contain;
+    background-position: center;
     overflow: hidden;
 }
 
 .wheel-container {
     position: relative;
-    width: 95vw;
+    width: 65vw;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
@@ -42,7 +51,7 @@ body {
     width: 15%; /* Use percentage for responsiveness */
     height: 15%;
     background: #fff;
-    background-image: url("https://scontent.fpnh19-1.fna.fbcdn.net/v/t39.30808-6/487394735_1163375895583779_7120676866079050354_n.png?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEx4x09ZM_rLLoI3nD1ND5PXjddYZBA3T9eN11hkEDdP3SZkw6QE5kadJi2S-ZCBSgQO6mgFZ2kEODsRtakwD_T&_nc_ohc=TbwvT_Ccy84Q7kNvwGOKrN1&_nc_oc=AdmOhBCfCvwAC6gAwHDIR7yTf0korBjsX2dxl3xW5nVmxiXhyUSxOje9kmrvHKW76vM&_nc_zt=23&_nc_ht=scontent.fpnh19-1.fna&_nc_gid=H2lZzG_Qj8o1RTl2ssv22g&oh=00_AfYWEGaE05vFGb8MhxiffSCISJt3b7lKgx9RJXdFdgMyhg&oe=68BD98F4");
+    background-image: url("./images/logo.jpg");
     background-size: contain;
     border-radius: 50%;
     top: 50%;
@@ -139,7 +148,11 @@ body {
 }
 
 .modal-content {
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: url("./images/Box.png");
+    background-image: no-repeat;
+    background-size: cover;
+    background-position: center;
     padding: 40px;
     border: none;
     width: 90%;
@@ -182,8 +195,8 @@ body {
 .answer-btn {
     padding: 14px;
     font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    border: 2px solid #e0e0e0;
+    font-family: ang;
+    border: none;
     border-radius: 12px;
     background-color: #f9f9f9;
     cursor: pointer;
@@ -225,22 +238,23 @@ body {
 
 /* Style for the new "Claim Prize" button */
 #claim-prize-btn {
-    margin-top: 20px;
+    /* margin-top: 20px;
     padding: 12px 30px;
     font-size: 18px;
     font-weight: 600;
     color: #fff;
     background-image: linear-gradient(45deg, #4CAF50 0%, #81C784 100%);
     border: none;
-    border-radius: 50px;
+    border-radius: 50px; */
+    width: 50%;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
     transition: all 0.2s ease-in-out;
 }
 
 #claim-prize-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); */
 }
 
 /* Utility class to hide elements */
@@ -268,21 +282,29 @@ body {
     margin: 0;
 }
 
-@media (min-width: 1024px) {
+@media only screen and (min-width: 1024px) {
     .wheel-container {
         max-width: 650px;
+        margin-top: 5%;
+        width: 50%;
     }
     .segment-text {
-        font-size: 16px;
-        top: 60%;
-        left: 50%;
+        font-size: 15px;
+        top: 65%;
+        left: 55%;
+    }
+    #spin-btn{
+        width: 50%;
+        margin-top: 30px;
+        z-index: 100;
+        cursor: pointer;
     }
 }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
     .wheel-container {
         position: relative;
-        width: 90%;
+        width: 80%;
         aspect-ratio: 1 / 1;
         display: flex;
         justify-content: center;
@@ -293,8 +315,8 @@ body {
     .segment-text {
         position: absolute;
         top: 60%;
-        left: 53%;
-        width: 45%;
+        left: 55%;
+        width: 48%;
         transform-origin: 0% 0%;
         color: white;
         font-weight: 600; /* Bolder font weight */
@@ -305,14 +327,27 @@ body {
         text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
+    #spin-btn{
+        width: 50%;
+        margin-top: 30px;
+        z-index: 100;
+        cursor: pointer;
+    }
+
     .spin-button {
         border-radius: 15px; /* Fully rounded */
         width: 40%;
         margin-top: 10%;
     }
 
+    body{
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
 }
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .segment-text {
         position: absolute;
         top: 58%;
@@ -326,5 +361,11 @@ body {
         box-sizing: border-box;
         text-align: center;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    #spin-btn{
+        width: 50%;
+        margin-top: 30px;
+        z-index: 100;
+        cursor: pointer;
     }
 }

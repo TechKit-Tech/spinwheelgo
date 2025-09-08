@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadData = async () => {
         try {
             const [questionsRes, prizesRes] = await Promise.all([
-                fetch('questions.json'),
+                fetch('questionskh.json'),
                 fetch('prizes.json')
             ]);
             questions = await questionsRes.json();
@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (selectedAnswer.correct) {
             answerOptionsContainer.style.display = 'none';
-            feedbackText.textContent = 'Correct! 🎉';
-            feedbackText.style.color = '#155724';
+            // feedbackText.textContent = 'Correct! 🎉';
+            feedbackText.style.color = '#ffffff';
             
             // Hide answers and show a random prize
             setTimeout(() => {
@@ -130,21 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 prizeImage.src = currentPrize.image;
                 prizeName.textContent = currentPrize.name;
                 
-                prizeDisplay.classList.remove('hidden');
+                // prizeDisplay.classList.remove('hidden');
                 claimPrizeBtn.classList.remove('hidden');
             }, 1000); // Wait 1 second before showing the prize
 
         } else {
             feedbackText.textContent = 'Sorry, that was incorrect.';
-            feedbackText.style.color = '#721c24';
+            feedbackText.style.color = '#ffffff';
         }
     };
 
     // Add this event listener for the new button at the end of your file
     const claimPrizeFromFirebase = async () => {
         // Disable the button to prevent multiple clicks
-        claimPrizeBtn.disabled = true;
-        claimPrizeBtn.textContent = 'Claiming...';
+        // claimPrizeBtn.disabled = true;
+        // claimPrizeBtn.textContent = 'Claiming...';
         
         try {
             // 1. Find a prize that has not been claimed yet
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         } catch (error) {
             console.error("Error claiming prize: ", error);
-            alert('There was an error claiming your prize. Please try again.');
+            // alert('There was an error claiming your prize. Please try again.');
             // Re-enable the button if there was an error
             claimPrizeBtn.disabled = false;
             claimPrizeBtn.textContent = 'Claim Prize 🏆';

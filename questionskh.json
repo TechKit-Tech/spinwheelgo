@@ -1,0 +1,104 @@
+[
+    {
+        "question": "តើអត្រាការប្រាក់សេវាផ្ទេរឥណទានអាជីវកម្ម (Loan Refinancing) របស់ MBCambodia ប៉ុន្មានភាគរយក្នុងមួយឆ្នាំ?",
+        "answers": [
+            {
+                "text": "6.88% (សម្រាប់ឆ្នាំដំបូង)",
+                "correct": true
+            },
+            {
+                "text": "12% ",
+                "correct": false
+            },
+            {
+                "text": "0%",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "question": "តើហេតុអ្វីអតិថិជនគួរផ្ទេរឥណទានអាជីវកម្ម (Refinancing Loan) មក MBCambodia?",
+        "answers": [
+            {
+                "text": "ដើម្បីការប្រាក់ទាបជាងមុន រយៈពេលយូរជាងមុន",
+                "correct": false
+            },
+            {
+                "text": "បានលក្ខខណ្ឌកម្ចីល្អជាងមុន",
+                "correct": false
+            },
+            {
+                "text": "ចម្លើយខាងលើ (a & b)",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "តើហេតុអ្វីបានជា MBCambodia ជាជម្រើសដៃគូហិរញ្ញវត្ថុដ៏ល្អសម្រាប់អតិថិជន?",
+        "answers": [
+            {
+                "text": "ភាគទុនិករឹងមាំ (MBBank នៅប្រទេសវៀតណាម)",
+                "correct": false
+            },
+            {
+                "text": "សេវាហិរញ្ញវត្ថុសម្បូរបែប",
+                "correct": false
+            },
+            {
+                "text": "ចម្លើយខាងលើ (a & b)",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "ហេតុអ្វីអតិថិជនគួរប្រើសេវាផ្ទេរប្រាក់ទៅប្រទេសវៀតណាម តាមសេវាធនាគារចល័ត MBCambodia My Bank App?",
+        "answers": [
+            {
+                "text": "មិនអស់ថ្លៃសេវា",
+                "correct": false
+            },
+            {
+                "text": "ផ្ញើភ្លាម ទទួលបានភ្លាម",
+                "correct": false
+            },
+            {
+                "text": "ចម្លើយខាងលើ (a & b)",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "តើ MBCambodia មានសេវាអ្វីខ្លះ?",
+        "answers": [
+            {
+                "text": "សេវាឥណទាន សេវាលិខិតធានា សេវាលិខិតឥណទាន",
+                "correct": false
+            },
+            {
+                "text": "សេវាបញ្ញើសន្សំ សេវាធនាគារចល័ត",
+                "correct": false
+            },
+            {
+                "text": "ចម្លើយខាងលើ (a & b)",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "question": "តើលិខិតធានា (Bank Guarantee – BG) របស់ MBCambodia ទទួលស្គាល់ពីស្ថាប័នណាខ្លះ?",
+        "answers": [
+            {
+                "text": "ក្រុមហ៊ុនឯកជន ទាំងក្នុងស្រុក នឹង ក្រៅស្រុក",
+                "correct": false
+            },
+            {
+                "text": "ស្ថាប័នលទ្ធកម្មសាធារណៈសម្រាប់គម្រោងរដ្ឋ",
+                "correct": false
+            },
+            {
+                "text": "ចម្លើយខាងលើ (a & b)",
+                "correct": true
+            }
+        ]
+    }
+]

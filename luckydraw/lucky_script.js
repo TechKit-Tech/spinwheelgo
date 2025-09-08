@@ -29,10 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Data Loading ---
     const loadData = async () => {
         try {
+            let filenameDate = "";
+            switch (new Date().toLocaleDateString()) {
+                case '9/8/2025':
+                    filenameDate = "accountnumber.json";
+                    break;
+                case '9/12/2025':
+                    filenameDate = "accountnumber_day2.json";
+                    break;
+                case '9/13/2025':
+                    filenameDate = "accountnumber_day3.json";
+                    break;
+            }
+
+
             const [questionsRes, prizesRes] = await Promise.all([
-                fetch('accountnumber.json'),
+                fetch(filenameDate),
                 fetch('prizes.json'), 
             ]);
+            console.log(`filenameDate ${filenameDate}`)
+            console.log(`check date ${new Date().toLocaleDateString()}`)
+            
+
             accnumbers = await questionsRes.json();
             prizes = await prizesRes.json();
             // createWheel();
@@ -58,87 +76,150 @@ document.addEventListener('DOMContentLoaded', () => {
        return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
     }
 
+    // --- Wheel Creation ---
     const createWheel = () => {
-        wheel.innerHTML = ''; // Clear previous content
+        // (This function remains the same as before)
+        spinner.innerHTML = '';
 
-        // --- Helper functions for SVG ---
-        const getRandomColor = () => {
-            const hue = Math.floor(Math.random() * 360);
-            return `hsl(${hue}, 80%, 60%)`;
-        };
-
-        // This function does the math to calculate a pie slice shape
-        const getPathForSlice = (size, startAngle, endAngle) => {
-            const radius = size / 2;
-            const x1 = radius + radius * Math.cos(Math.PI * startAngle / 180);
-            const y1 = radius + radius * Math.sin(Math.PI * startAngle / 180);
-            const x2 = radius + radius * Math.cos(Math.PI * endAngle / 180);
-            const y2 = radius + radius * Math.sin(Math.PI * endAngle / 180);
-            const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-            
-            return `M${radius},${radius} L${x1},${y1} A${radius},${radius} 0 ${largeArcFlag} 1 ${x2},${y2} Z`;
-        };
-
-        // --- Main wheel creation logic ---
         const numSegments = accnumbers.length;
         const segmentAngle = 360 / numSegments;
-        const svgSize = 500; // SVG coordinate system size
+        const colors = ['#6A1B9A', '#303F9F', '#0277BD', '#00695C', '#558B2F', '#F9A825', '#EF6C00', '#D84315'];
 
-        // Create the SVG element
-        const svgNS = "http://www.w3.org/2000/svg";
-        const svg = document.createElementNS(svgNS, "svg");
-        svg.setAttribute("viewBox", `0 0 ${svgSize} ${svgSize}`);
+        const gradientParts = accnumbers.map((_, i) => {
+            const color = colors[i % colors.length];
+            return `${color} ${i * segmentAngle}deg ${(i + 1) * segmentAngle}deg`;
+        });
+        spinner.style.background = `conic-gradient(${gradientParts.join(', ')})`;
 
-        console.log(`length account ${winner_number.length}`)
-        console.log(`length ${accnumbers.length}`)
+        // accnumbers.forEach((q, i) => {
+        //     const textContainer = document.createElement('div');
+        //     textContainer.className = 'wheel-segment';
+        //     const textElement = document.createElement('div');
+        //     textElement.className = 'segment-text';
+        //     textElement.textContent = q.accountnumber;
+        //     const textRotation = (i * segmentAngle) + (segmentAngle / 2);
+        //     textContainer.style.transform = `rotate(${textRotation}deg)`;
+        //     textElement.style.transform = `translateY(-50%) rotate(90deg)`;
+        //     textContainer.appendChild(textElement);
+        //     spinner.appendChild(textContainer);
+        // });
 
         accnumbers.forEach((q, i) => {
-            const startAngle = i * segmentAngle;
-            const endAngle = startAngle + segmentAngle;
-
-            // --- 1. Draw the colored SVG slice ---
-            const slice = document.createElementNS(svgNS, "path");
-            slice.setAttribute("d", getPathForSlice(svgSize, startAngle, endAngle));
-            slice.setAttribute("fill", getRandomColor());
-            svg.appendChild(slice);
-
-            // --- 2. Create and place the HTML text element on top ---
             const textContainer = document.createElement('div');
             textContainer.className = 'wheel-segment';
-            
+
             const textElement = document.createElement('div');
             textElement.className = 'segment-text';
-            textElement.textContent = `Question ${i + 1}`;
-            
-            const textRotation = startAngle + (segmentAngle / 2);
-            textContainer.style.transform = `rotate(${textRotation}deg)`;
-            
-            textContainer.appendChild(textElement);
-            // Append text to the main wheel container, not the SVG
-            wheel.appendChild(textContainer);
-        });
+            textElement.textContent = q.accountnumber;
 
-        // Add the finished SVG to the wheel container
-        wheel.prepend(svg);
+            // Calculate rotation to place text in the middle of the segment
+            const textRotation = (i * segmentAngle) + (segmentAngle / 2);
+
+            // Position text in the center, then rotate to stay upright
+            textContainer.style.position = "absolute";
+            textContainer.style.top = "50%";
+            textContainer.style.left = "50%";
+            textContainer.style.transform = `rotate(${textRotation}deg) translate(0, -40%)`; 
+            textContainer.style.transformOrigin = "center center";
+
+            textElement.style.transform = `rotate(-${textRotation}deg)`; 
+            textElement.style.textAlign = "center";
+
+            textContainer.appendChild(textElement);
+            spinner.appendChild(textContainer);
+        });
     };
+
+    // const createWheel = () => {
+    //     wheel.innerHTML = ''; // Clear previous content
+
+    //     // --- Helper functions for SVG ---
+    //     const getRandomColor = () => {
+    //         const hue = Math.floor(Math.random() * 360);
+    //         return `hsl(${hue}, 80%, 60%)`;
+    //     };
+
+    //     // This function does the math to calculate a pie slice shape
+    //     const getPathForSlice = (size, startAngle, endAngle) => {
+    //         const radius = size / 2;
+    //         const x1 = radius + radius * Math.cos(Math.PI * startAngle / 180);
+    //         const y1 = radius + radius * Math.sin(Math.PI * startAngle / 180);
+    //         const x2 = radius + radius * Math.cos(Math.PI * endAngle / 180);
+    //         const y2 = radius + radius * Math.sin(Math.PI * endAngle / 180);
+    //         const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+            
+    //         return `M${radius},${radius} L${x1},${y1} A${radius},${radius} 0 ${largeArcFlag} 1 ${x2},${y2} Z`;
+    //     };
+
+    //     // --- Main wheel creation logic ---
+    //     const numSegments = accnumbers.length;
+    //     const segmentAngle = 360 / numSegments;
+    //     const svgSize = 500; // SVG coordinate system size
+
+    //     // Create the SVG element
+    //     const svgNS = "http://www.w3.org/2000/svg";
+    //     const svg = document.createElementNS(svgNS, "svg");
+    //     svg.setAttribute("viewBox", `0 0 ${svgSize} ${svgSize}`);
+
+    //     console.log(`length account ${winner_number.length}`)
+    //     console.log(`length ${accnumbers.length}`)
+
+    //     accnumbers.forEach((q, i) => {
+    //         const startAngle = i * segmentAngle;
+    //         const endAngle = startAngle + segmentAngle;
+
+    //         // --- 1. Draw the colored SVG slice ---
+    //         const slice = document.createElementNS(svgNS, "path");
+    //         slice.setAttribute("d", getPathForSlice(svgSize, startAngle, endAngle));
+    //         slice.setAttribute("fill", getRandomColor());
+    //         svg.appendChild(slice);
+
+    //         // --- 2. Create and place the HTML text element on top ---
+    //         const textContainer = document.createElement('div');
+    //         textContainer.className = 'wheel-segment';
+            
+    //         const textElement = document.createElement('div');
+    //         textElement.className = 'segment-text';
+    //         textElement.textContent = `Question ${i + 1}`;
+            
+    //         const textRotation = startAngle + (segmentAngle / 2);
+    //         textContainer.style.transform = `rotate(${textRotation}deg)`;
+            
+    //         textContainer.appendChild(textElement);
+    //         // Append text to the main wheel container, not the SVG
+    //         wheel.appendChild(textContainer);
+    //     });
+
+    //     // Add the finished SVG to the wheel container
+    //     wheel.prepend(svg);
+    // };
 
 
     // ALSO, update the spin logic to rotate the new 'wheel' element
+   
     const spinWheel = () => {
-        if (isSpinning) return;
+        // if (isSpinning) return;
         
+        // isSpinning = true;
+        // spinBtn.disabled = true;
+
+        // const randomExtraRotation = Math.floor(Math.random() * 360);
+        // const totalRotation = currentRotation + (360 * 5) + randomExtraRotation;
+        // currentRotation = totalRotation;
+        // // UPDATE this line to use 'wheel'
+        // // wheel.style.transform = `rotate(${totalRotation}deg)`;
+        if (isSpinning) return;
         isSpinning = true;
         spinBtn.disabled = true;
 
         const randomExtraRotation = Math.floor(Math.random() * 360);
         const totalRotation = currentRotation + (360 * 5) + randomExtraRotation;
         currentRotation = totalRotation;
-        // UPDATE this line to use 'wheel'
-        wheel.style.transform = `rotate(${totalRotation}deg)`;
+        spinner.style.transform = `rotate(${totalRotation}deg)`;
     };
 
-    // spinner.addEventListener('transitionend', () => {
-    wheel.addEventListener('transitionend', async () => {
+    spinner.addEventListener('transitionend', async () => {
+    // wheel.addEventListener('transitionend', async () => {
         console.log('trigger')
         isSpinning = false;
         const actualRotation = currentRotation % 360;
