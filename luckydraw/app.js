@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             let filenameDate = "";
             switch (new Date().toLocaleDateString()) {
-                case '9/8/2025':
+                case '9/11/2025':
                     filenameDate = "../luckydraw/accountnumber.json";
                     break;
                 case '9/12/2025':
@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
                 case '9/13/2025':
                     filenameDate = "../luckydraw/accountnumber_day3.json";
+                    break;
+                default: 
+                    filenameDate = "../luckydraw/accountnumber.json";
                     break;
             }
 
